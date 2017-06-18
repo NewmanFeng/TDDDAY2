@@ -14,8 +14,7 @@
 
         public decimal GetPrice()
         {
-            return 0m;
-
+            return 100m;
         }
     }
 }
