@@ -2,13 +2,13 @@
 {
     public class Book
     {
-        public readonly string name;
-        public readonly int count;
+        public readonly string Name;
+        public int Count;
 
         public Book(string name, int count)
         {
-            this.name = name;
-            this.count = count;
+            this.Name = name;
+            this.Count = count;
         }
     }
 }

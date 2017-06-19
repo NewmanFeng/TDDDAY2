@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
@@ -6,7 +7,7 @@ namespace TDDDAY2
 {
     internal class ShoppingCar
     {
-        private List<Book> _books;
+        protected List<Book> _books;
         protected readonly decimal SinglePrice = 100m;
 
         protected Dictionary<int, decimal> DiscountInfo = new Dictionary<int, decimal>()
@@ -26,13 +27,23 @@ namespace TDDDAY2
         public void Buy(Book book)
         {
             _books.Add(book);
-
+            
         }
 
         public decimal GetPrice()
         {
-            var totalCount = _books.Sum(book => book.count);
-            var price = SinglePrice * totalCount * GetDiscount(totalCount);
+            var totalCount = _books.Count(book => book.Count > 0);
+            var price = 0m;
+            while (totalCount>0)
+            {
+                price += SinglePrice * totalCount * GetDiscount(totalCount);
+                foreach (var book in _books)
+                {
+                    book.Count =book.Count- 1;
+                }
+                totalCount = _books.Count(book => book.Count > 0);
+            }
+
             return price;
         }
 
