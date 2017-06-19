@@ -13,32 +13,78 @@ namespace TDDDAY2.Tests
     public class ShoppingCarTests
     {
         [TestMethod()]
-        public void Buy_One_HollyPoter1_Price_Should_Match()
+        public void Buy_One_HarryPotter1_Price_Should_Match()
         {
             var target = new ShoppingCar();
 
-            target.Buy(new Book("HollyPoter1", 1));
-            target.Buy(new Book("HollyPoter2", 0));
-            target.Buy(new Book("HollyPoter3", 0));
-            target.Buy(new Book("HollyPoter4", 0));
-            target.Buy(new Book("HollyPoter5", 0));
+            target.Buy(new Book("HarryPotter1", 1));
+            target.Buy(new Book("HarryPotter2", 0));
+            target.Buy(new Book("HarryPotter3", 0));
+            target.Buy(new Book("HarryPotter4", 0));
+            target.Buy(new Book("HarryPotter5", 0));
 
             var expected = 100m;
             Assert.AreEqual(expected, target.GetPrice());
         }
 
         [TestMethod()]
-        public void Buy_One_HollyPoter1_One_HollyPoter2_Price_Should_Match()
+        public void Buy_One_HarryPotter1_One_HarryPotter2_Price_Should_Match()
         {
             var target = new ShoppingCar();
 
-            target.Buy(new Book("HollyPoter1", 1));
-            target.Buy(new Book("HollyPoter2", 1));
-            target.Buy(new Book("HollyPoter3", 0));
-            target.Buy(new Book("HollyPoter4", 0));
-            target.Buy(new Book("HollyPoter5", 0));
+            target.Buy(new Book("HarryPotter1", 1));
+            target.Buy(new Book("HarryPotter2", 1));
+            target.Buy(new Book("HarryPotter3", 0));
+            target.Buy(new Book("HarryPotter4", 0));
+            target.Buy(new Book("HarryPotter5", 0));
 
             var expected = 190m;
+            Assert.AreEqual(expected, target.GetPrice());
+        }
+
+        [TestMethod()]
+        public void Buy_One_HarryPotter1_One_HarryPotter2_One_HarryPotter3_Price_Should_Match()
+        {
+            var target = new ShoppingCar();
+
+            target.Buy(new Book("HarryPotter1", 1));
+            target.Buy(new Book("HarryPotter2", 1));
+            target.Buy(new Book("HarryPotter3", 1));
+            target.Buy(new Book("HarryPotter4", 0));
+            target.Buy(new Book("HarryPotter5", 0));
+
+            var expected = 270m;
+            Assert.AreEqual(expected, target.GetPrice());
+        }
+
+        [TestMethod()]
+        public void Buy_One_HarryPotter1_One_HarryPotter2_One_HarryPotter3_One_HarryPotter4_Price_Should_Match()
+        {
+            var target = new ShoppingCar();
+
+            target.Buy(new Book("HarryPotter1", 1));
+            target.Buy(new Book("HarryPotter2", 1));
+            target.Buy(new Book("HarryPotter3", 1));
+            target.Buy(new Book("HarryPotter4", 1));
+            target.Buy(new Book("HarryPotter5", 0));
+
+            var expected = 320m;
+            Assert.AreEqual(expected, target.GetPrice());
+        }
+
+
+        [TestMethod()]
+        public void Buy_One_HarryPotter1_One_HarryPotter2_One_HarryPotter3_One_HarryPotter4_One_HarryPotter5_Price_Should_Match()
+        {
+            var target = new ShoppingCar();
+
+            target.Buy(new Book("HarryPotter1", 1));
+            target.Buy(new Book("HarryPotter2", 1));
+            target.Buy(new Book("HarryPotter3", 1));
+            target.Buy(new Book("HarryPotter4", 1));
+            target.Buy(new Book("HarryPotter5", 1));
+
+            var expected = 375m;
             Assert.AreEqual(expected, target.GetPrice());
         }
     }

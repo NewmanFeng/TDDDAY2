@@ -33,6 +33,18 @@ namespace TDDDAY2
             {
                 price = 100 * totalCount * 0.95m;
             }
+            else if(totalCount==3)
+            {
+                price = 100*totalCount*0.9m;
+            }
+            else if(totalCount==4)
+            {
+                price = 100 * totalCount * 0.8m;
+            }
+            else if (totalCount == 5)
+            {
+                price = 100 * totalCount * 0.75m;
+            }
             return price;
         }
     }
