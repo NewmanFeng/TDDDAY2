@@ -9,6 +9,15 @@ namespace TDDDAY2
         private List<Book> _books;
         protected readonly decimal SinglePrice = 100m;
 
+        protected Dictionary<int, decimal> DiscountInfo = new Dictionary<int, decimal>()
+        {
+            {1,1 },
+            {2,0.95m },
+            {3,0.9m },
+            {4,0.8m },
+            {5,0.75m }
+        };
+
         public ShoppingCar()
         {
             _books = new List<Book>();
@@ -23,55 +32,13 @@ namespace TDDDAY2
         public decimal GetPrice()
         {
             var totalCount = _books.Sum(book => book.count);
-            var price = SinglePrice*totalCount*GetDiscount(totalCount);
-
-            //if (totalCount == 1)
-            //{
-            //    price = SinglePrice * totalCount ;
-            //}
-            //else if (totalCount == 2)
-            //{
-            //    price = SinglePrice * totalCount * 0.95m;
-            //}
-            //else if(totalCount==3)
-            //{
-            //    price = SinglePrice*totalCount*0.9m;
-            //}
-            //else if(totalCount==4)
-            //{
-            //    price = SinglePrice * totalCount * 0.8m;
-            //}
-            //else if (totalCount == 5)
-            //{
-            //    price = 100 * totalCount * 0.75m;
-            //}
+            var price = SinglePrice * totalCount * GetDiscount(totalCount);
             return price;
         }
 
-        private decimal GetDiscount(int totalCount)
+        private decimal GetDiscount(int count)
         {
-
-            if (totalCount == 1)
-            {
-                return 1;
-            }
-            else if (totalCount == 2)
-            {
-            return 0.95m;
-            }
-            else if (totalCount == 3)
-            {
-                return 0.9m;
-            }
-            else if (totalCount == 4)
-            {
-                return 0.8m;
-            }
-            else if (totalCount == 5)
-            {
-                return 0.75m;
-            }
-            return 1;
+            return DiscountInfo[count];
         }
     }
 }
