@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace TDDDAY2
 {
@@ -27,24 +25,31 @@ namespace TDDDAY2
         public void Buy(Book book)
         {
             _books.Add(book);
-            
+
         }
 
         public decimal GetPrice()
         {
-            var totalCount = _books.Count(book => book.Count > 0);
             var price = 0m;
-            while (totalCount>0)
+            while (GetBookCount() > 0)
             {
-                price += SinglePrice * totalCount * GetDiscount(totalCount);
-                foreach (var book in _books)
-                {
-                    book.Count =book.Count- 1;
-                }
-                totalCount = _books.Count(book => book.Count > 0);
+                price += SinglePrice * GetBookCount() * GetDiscount(GetBookCount());
+                RemoveCountedBook();
             }
-
             return price;
+        }
+
+        private int GetBookCount()
+        {
+            return _books.Count(book => book.Count > 0);
+        }
+
+        private void RemoveCountedBook()
+        {
+            foreach (var book in _books)
+            {
+                book.Count = book.Count - 1;
+            }
         }
 
         private decimal GetDiscount(int count)
