@@ -118,5 +118,20 @@ namespace TDDDAY2.Tests
             var expected = 370m;
             Assert.AreEqual(expected, target.GetPrice());
         }
+
+        [TestMethod()]
+        public void Buy_One_HarryPotter1_Two_HarryPotter2_Two_HarryPotter3_Price_Should_Match()
+        {
+            var target = new ShoppingCar();
+
+            target.Buy(new Book("HarryPotter1", 1));
+            target.Buy(new Book("HarryPotter2", 2));
+            target.Buy(new Book("HarryPotter3", 2));
+            target.Buy(new Book("HarryPotter4", 0));
+            target.Buy(new Book("HarryPotter5", 0));
+
+            var expected = 460m;
+            Assert.AreEqual(expected, target.GetPrice());
+        }
     }
 }
