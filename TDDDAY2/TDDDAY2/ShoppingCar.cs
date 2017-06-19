@@ -38,6 +38,8 @@ namespace TDDDAY2
 
         private decimal GetDiscount(int count)
         {
+            if (count == 0 || count > 5)
+                return 1;
             return DiscountInfo[count];
         }
     }

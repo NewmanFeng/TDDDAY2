@@ -12,6 +12,22 @@ namespace TDDDAY2.Tests
     [TestClass()]
     public class ShoppingCarTests
     {
+
+        [TestMethod()]
+        public void Buy_Nothing_Price_Should_Match()
+        {
+            var target = new ShoppingCar();
+
+            target.Buy(new Book("HarryPotter1", 0));
+            target.Buy(new Book("HarryPotter2", 0));
+            target.Buy(new Book("HarryPotter3", 0));
+            target.Buy(new Book("HarryPotter4", 0));
+            target.Buy(new Book("HarryPotter5", 0));
+
+            var expected = 0;
+            Assert.AreEqual(expected, target.GetPrice());
+        }
+
         [TestMethod()]
         public void Buy_One_HarryPotter1_Price_Should_Match()
         {
